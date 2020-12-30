@@ -5,44 +5,44 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class AstronomyPictureOfTheDay {
     private final String date;
     private final String explanation;
-    private final String media_type;
-    private final String service_version;
+    private final String mediaType;
+    private final String serviceVersion;
     private final String title;
     private final String url;
-    private final String hdurl;
-    private final String thumbnail_url;
+    private final String hdUrl;
+    private final String thumbnailUrl;
     private final String copyright;
 
     public AstronomyPictureOfTheDay(
             @JsonProperty("date") String date,
             @JsonProperty("explanation") String explanation,
-            @JsonProperty("media_type") String media_type,
-            @JsonProperty("service_version") String service_version,
+            @JsonProperty("media_type") String mediaType,
+            @JsonProperty("service_version") String serviceVersion,
             @JsonProperty("title") String title,
             @JsonProperty("url") String url,
-            @JsonProperty("hdurl") String hdurl,
-            @JsonProperty("thumbnail_url") String thumbnail_url,
+            @JsonProperty("hdurl") String hdUrl,
+            @JsonProperty("thumbnail_url") String thumbnailUrl,
             @JsonProperty("copyright") String copyright) {
         this.date = date;
         this.explanation = explanation;
-        this.media_type = media_type;
-        this.service_version = service_version;
+        this.mediaType = mediaType;
+        this.serviceVersion = serviceVersion;
         this.title = title;
         this.url = url;
-        this.hdurl = hdurl;
-        this.thumbnail_url = thumbnail_url;
+        this.hdUrl = hdUrl;
+        this.thumbnailUrl = thumbnailUrl;
         this.copyright = copyright;
     }
 
-    public AstronomyPictureOfTheDay (String media_type, String url, String thumbnail_url) {
-        this.media_type = media_type;
+    public AstronomyPictureOfTheDay (String mediaType, String url, String thumbnailUrl) {
+        this.mediaType = mediaType;
         this.url = url;
-        this.thumbnail_url = thumbnail_url;
+        this.thumbnailUrl = thumbnailUrl;
         this.date = "";
         this.explanation = "";
-        this.service_version = "";
+        this.serviceVersion = "";
         this.title = "";
-        this.hdurl = "";
+        this.hdUrl = "";
         this.copyright = "";
     }
 
@@ -51,21 +51,21 @@ public class AstronomyPictureOfTheDay {
         return "APOD{" +
                 "date='" + date + '\'' +
                 ", explanation='" + explanation + '\'' +
-                ", media_type='" + media_type + '\'' +
-                ", service_version='" + service_version + '\'' +
+                ", media_type='" + mediaType + '\'' +
+                ", service_version='" + serviceVersion + '\'' +
                 ", title='" + title + '\'' +
                 ", url='" + url + '\'' +
-                ", hdurl='" + hdurl + '\'' +
+                ", hdurl='" + hdUrl + '\'' +
                 '}';
     }
 
     public String getImageUrl() {
-        switch (media_type) {
+        switch (mediaType) {
             case "image" : {
                 return url;
             }
             case "video" : {
-                return thumbnail_url;
+                return thumbnailUrl;
             }
             default: {
                 throw new RuntimeException("Can't get image url.");
